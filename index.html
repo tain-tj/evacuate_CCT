@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>รายงานยอดอพยพ อาคาร CCT</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- Google Fonts: Sarabun -->
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <style>
+        body { 
+            background-color: #f4f6f9; 
+            font-family: 'Sarabun', sans-serif; 
+        }
+        .card { 
+            border-radius: 15px; 
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+            border: none;
+        }
+        .card-header { 
+            background-color: #d32f2f; 
+            color: white; 
+            border-radius: 15px 15px 0 0 !important; 
+        }
+        .form-label { font-weight: 600; color: #333; }
+        .section-title { 
+            margin-top: 1.5rem; 
+            margin-bottom: 1rem; 
+            color: #d32f2f; 
+            border-bottom: 2px solid #d32f2f; 
+            padding-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group-text { background-color: #f8f9fa; }
+    </style>
+</head>
+<body>
+    <div class="container py-4" style="max-width: 600px;">
+        <div class="card">
+            <div class="card-header text-center py-3">
+                <h4 class="mb-0"><i class="fas fa-fire-extinguisher me-2"></i>รายงานยอดอพยพ อาคาร CCT</h4>
+            </div>
+            <div class="card-body px-4">
+                <form id="evacuationForm">
+                    
+                    <!-- 1. ชื่อบริษัท -->
+                    <div class="mb-3">
+                        <label for="company" class="form-label">1. ชื่อบริษัท / ผู้เช่า / หน่วยงาน</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-building"></i></span>
+                            <input class="form-control" list="companyList" id="company" name="company" placeholder="เลือกหรือพิมพ์ชื่อหน่วยงาน..." required>
+                        </div>
+                        <datalist id="companyList">
+                            <option value="บริษัท ซังกิวไทย จำกัด"></option>
+                            <option value="บริษัท เมอิโยชะ แอ็คเคาน์ติ้ง แอนด์ คอนซัลแตนท์ จำกัด"></option>
+                            <option value="บริษัท เอซ ดิจิตอล พริ้นติ้ง จำกัด"></option>
+                            <option value="บริษัท ยูโก อไรส์ชายน์ จำกัด"></option>
+                            <option value="บริษัท อัลติเมท มีเดีย กรุ๊ป จำกัด"></option>
+                            <option value="บริษัท เอฟแอลอี (ประเทศไทย) จำกัด"></option>
+                            <option value="บริษัท โออีซีแอล (ไทยแลนด์) จำกัด"></option>
+                            <option value="บริษัท บุญสมและมาโนช จำกัด"></option>
+                            <option value="บริษัท สล็อท-นานไก จำกัด"></option>
+                            <option value="บริษัท ฮอเนอร์เลน โลจิสติกส์ จำกัด"></option>
+                            <option value="บริษัท เอช แอล เอส แอร์ ซี (อินเตอร์เนชั่นแนล) โลจิสติกส์ จำกัด"></option>
+                            <option value="บริษัท เรด ไลน์ ชิปปิ้ง แอนด์ โลจิสติกส์ (ไทยแลนด์) จำกัด"></option>
+                            <option value="บริษัท โก ไทยแลนด์ ทัวร์ จำกัด"></option>
+                            <option value="บริษัท โอทีเจ จำกัด"></option>
+                            <option value="บริษัท อารีแมร์ ทราเวิล จำกัด"></option>
+                            <option value="บริษัท เอส.พี.บี.ฟาร์มา จำกัด"></option>
+                            <option value="บริษัท ด๊อกคิวเมนท์ส ทู โก จำกัด"></option>
+                            <option value="บริษัท แอลพีเค โกลบอล เทรด จำกัด"></option>
+                            <option value="บริษัท คิวพอยท์ ซอฟต์แวร์ เซอร์วิส จำกัด"></option>
+                            <option value="บริษัท มาสเตอร์ ซีเมนต์ จำกัด"></option>
+                            <option value="บริษัท ชิพ ไทม์มิ่ง จำกัด"></option>
+                            <option value="บริษัท มานาเอเชีย จำกัด"></option>
+                            <option value="บริษัท ยู-ทัวร์ จำกัด"></option>
+                            <option value="บริษัท เวลเฟรท จำกัด"></option>
+                            <option value="บริษัท แพคโอเรียนท์ จำกัด"></option>
+                            <option value="บริษัท ชิปแพค จำกัด"></option>
+                            <option value="บริษัท เจเอส ทราเวล จำกัด"></option>
+                            <option value="บริษัท ลำไพลพาราวู้ด จำกัด"></option>
+                            <option value="บริษัท นิฮง เซริ-ชิ โคออพเพอเรท ออฟฟิศ จำกัด"></option>
+                            <option value="บริษัท อิวาอิ แพลนท์ เทค (ประเทศไทย) จำกัด"></option>
+                            <option value="บริษัท ซัมมิท คอมพิวเตอร์ จำกัด"></option>
+                            <option value="บริษัท เลาทัน ลูอัส (ประเทศไทย) จำกัด"></option>
+                            <option value="บริษัท ซี ยูนิตี้ จำกัด"></option>
+                            <option value="บริษัท สยามเคาน์ซิล คัสตอมส์ แอนด์ อินเตอร์เนชั่นแนล เทรด เซอร์วิสเซส จำกัด"></option>
+                            <option value="บริษัท เค เอ็ม โลจิสติกส์ จำกัด"></option>
+                            <option value="บริษัท ลอยัลอินเตอร์เฟรทแอนด์โลจิสติคส์ จำกัด"></option>
+                            <option value="บริษัท เมริโตส สยาม จำกัด"></option>
+                            <option value="บริษัท เอ-โซนิค โลจิสติคส์ (ประเทศไทย ) จำกัด"></option>
+                            <option value="บริษัท แจนทเวนตี้ จำกัด (อเมซอน)"></option>
+                            <option value="ฝ่ายยุทธศาสตร์"></option>
+                            <option value="การตลาด"></option>
+                            <option value="พิพิธภัณฑ์"></option>
+                            <option value="อาคารพาณิชย์(CCT)"></option>
+                            <option value="แม่บ้านประจำอาคารCCT"></option>
+                            <option value="รปภ. ประจำอาคาร CCT"></option>
+                        </datalist>
+                    </div>
+
+                    <!-- 2. ชั้น / พื้นที่เช่า -->
+                    <div class="mb-3">
+                        <label for="floor" class="form-label">2. ชั้น / พื้นที่เช่า</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-layer-group"></i></span>
+                            <input type="text" class="form-control" id="floor" name="floor" required>
+                        </div>
+                    </div>
+
+                    <!-- หมวดก่อนอพยพ -->
+                    <h5 class="section-title"><i class="fas fa-users me-2"></i>หมวดคนที่อยู่ในพื้นที่ก่อนอพยพ</h5>
+                    
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label class="form-label">3. จำนวนพนักงานทั้งหมด (คน)</label>
+                            <input type="number" class="form-control" id="totalEmp" name="totalEmp" min="0" required>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label">4. จำนวนพนักงานที่มาทำงานวันนี้ (คน)</label>
+                            <input type="number" class="form-control" id="todayEmp" name="todayEmp" min="0" required>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label">5. จำนวนผู้มาติดต่อ / ผู้รับเหมา (คน)</label>
+                            <input type="number" class="form-control" id="visitors" name="visitors" min="0" required>
+                        </div>
+                    </div>
+
+                    <!-- หมวดผลการตรวจนับ -->
+                    <h5 class="section-title"><i class="fas fa-clipboard-check me-2"></i>หมวดผลการตรวจนับ (ยอดอพยพ)</h5>
+                    
+                    <div class="row">
+                        <div class="col-12 mb-3">
+                            <label class="form-label text-success">6. จำนวนที่มารายงานตัว ณ จุดรวมพล (รวมทุกคน)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-success text-white"><i class="fas fa-check-circle"></i></span>
+                                <input type="number" class="form-control" id="assemblyCount" name="assemblyCount" min="0" required>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label text-primary">7. จำนวนที่ยืนยันว่าปลอดภัย ณ จุดอื่น (ไม่นับซ้ำ)</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-primary text-white"><i class="fas fa-shield-alt"></i></span>
+                                <input type="number" class="form-control" id="safeCount" name="safeCount" min="0" required>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label text-danger">8. จำนวนผู้สูญหาย / ยังตรวจสอบไม่ได้</label>
+                            <div class="input-group">
+                                <span class="input-group-text bg-danger text-white"><i class="fas fa-exclamation-triangle"></i></span>
+                                <input type="number" class="form-control" id="missingCount" name="missingCount" min="0" required>
+                            </div>
+                        </div>
+                        <div class="col-12 mb-3">
+                            <label class="form-label">9. ชื่อผู้สูญหาย / ตำแหน่งสุดท้ายที่เห็น (ถ้ามี)</label>
+                            <textarea class="form-control" id="missingNames" name="missingNames" rows="2" placeholder="ถ้าไม่มีให้เว้นว่างหรือพิมพ์ว่า 'ไม่มี'"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- ข้อมูลผู้รายงาน -->
+                    <h5 class="section-title"><i class="fas fa-user-edit me-2"></i>ข้อมูลผู้รายงาน</h5>
+                    <div class="mb-3">
+                        <label class="form-label">10. ชื่อผู้รายงาน</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            <input type="text" class="form-control" id="reporterName" name="reporterName" required>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">11. เบอร์โทรติดต่อ</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                            <input type="tel" class="form-control" id="reporterPhone" name="reporterPhone" required>
+                        </div>
+                    </div>
+
+                    <!-- ปุ่มส่ง -->
+                    <button type="submit" class="btn btn-danger w-100 py-3 fs-5 fw-bold rounded-pill shadow-sm">
+                        <i class="fas fa-paper-plane me-2"></i>ส่งรายงาน
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // *** นำ URL ของ Web App ที่ได้จาก Google Apps Script มาใส่ตรงนี้ ***
+        const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxr_z3BIiFYyGEgCw30P4EkXkfj_PV4J9nYGqYW8myzcD59B1u_ciFBqKdE1JViu1arYw/exec';
+
+        document.getElementById('evacuationForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // ป้องกันการรีเฟรชหน้า
+
+            // 1. ดึงข้อมูลจากฟอร์ม
+            const formData = {
+                company: document.getElementById('company').value,
+                floor: document.getElementById('floor').value,
+                totalEmp: document.getElementById('totalEmp').value,
+                todayEmp: document.getElementById('todayEmp').value,
+                visitors: document.getElementById('visitors').value,
+                assemblyCount: document.getElementById('assemblyCount').value,
+                safeCount: document.getElementById('safeCount').value,
+                missingCount: document.getElementById('missingCount').value,
+                missingNames: document.getElementById('missingNames').value,
+                reporterName: document.getElementById('reporterName').value,
+                reporterPhone: document.getElementById('reporterPhone').value,
+            };
+
+            // 2. แสดง SweetAlert ระหว่างรอส่งข้อมูล
+            Swal.fire({
+                title: 'กำลังบันทึกข้อมูล...',
+                text: 'กรุณารอสักครู่ ระบบกำลังส่งข้อมูลเข้าส่วนกลาง',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            // 3. ส่งข้อมูลไปที่ Google Apps Script
+            // ส่งด้วย text/plain เพื่อเลี่ยงปัญหา CORS Preflight ใน GitHub Pages
+            fetch(SCRIPT_URL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'text/plain;charset=utf-8', 
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.result === 'success') {
+                    // ปิด Loading และแสดง Success Alert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'บันทึกสำเร็จ!',
+                        text: 'ข้อมูลของคุณถูกส่งเข้าระบบเรียบร้อยแล้ว',
+                        confirmButtonText: 'ตกลง',
+                        confirmButtonColor: '#28a745'
+                    }).then(() => {
+                        document.getElementById('evacuationForm').reset(); // เคลียร์ฟอร์ม
+                        window.scrollTo(0,0);
+                    });
+                } else {
+                    throw new Error('บันทึกไม่สำเร็จ');
+                }
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เกิดข้อผิดพลาด!',
+                    text: 'ไม่สามารถบันทึกข้อมูลได้ กรุณาลองใหม่อีกครั้ง',
+                    confirmButtonText: 'ตกลง',
+                    confirmButtonColor: '#d33'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
